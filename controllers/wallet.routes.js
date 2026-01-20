@@ -15,5 +15,9 @@ router.post("/create", async (req,res) => {
     }
 })
 
+router.get("/",async(req,res)=>{
+    const foundWallet = await Wallet.findOne({ owner: req.session.user._id });
+    res.render("wallet/my-wallet.ejs",{foundWallet: foundWallet})
+})
 
 module.exports = router;
