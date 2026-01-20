@@ -10,6 +10,12 @@ const walletSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  goal: {
+    type: Number,
+    min: 51,
+    required: true
+  }
+  ,
   owner: {
     type: mongoose.Types.ObjectId,
     ref: "User"

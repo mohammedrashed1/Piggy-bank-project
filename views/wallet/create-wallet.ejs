@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wallet</title>
+</head>
+<body>
+    <h1>Create new wallet</h1>
+    <p>It's time to save some money</p>
+    <br>
+    <form action="/wallet/create" method="post">
+        <% let number = Math.floor(Math.random() * 10000000)%>
+        <h3>Number: <%= number %></h3>
+        <input value="<%= number %>" style="display: none;" name="number" type="text">
+        <br>
+        <h4>please keep this number with you as you will need it for: </h4>
+        <h5>1. reset the password if you forgot it.</h5>
+        <h5>2. money transfer.</h5>
+<br>
+        <label for="">Enter your deposit: </label>
+        <input type="number" min="50" name="balance">
+<br>
+        <label for="">Your goal: </label>
+        <input type="number" min="51" name="goal">
+
+        <button>Create wallet</button>
+    </form>
+</body>
+</html>
