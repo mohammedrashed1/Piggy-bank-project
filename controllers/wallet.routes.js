@@ -33,7 +33,29 @@ router.post("/create", async (req,res) => {
 router.get("/",async(req,res)=>{
     const foundWallet = await Wallet.findOne({ owner: req.session.user._id });
     res.render("wallet/my-wallet.ejs",{foundWallet: foundWallet})
+    
 })
 
+router.get("/delete",async (req,res) => {
+    const foundWallet = await Wallet.findOne({ owner: req.session.user._id });
+    const deletedWallet = await Wallet.findByIdAndDelete(foundWallet._id)
+    res.redirect("/")
+    
+})
+
+router.get("/edit",async(req,res) => {
+    const foundWallet = await Wallet.findOne({ owner: req.session.user._id });
+    res.render("wallet/edit-wallet.ejs",{foundWallet: foundWallet})
+    
+})
+
+router.post("/edit",async(req,res)=>{
+    const foundWallet = await Wallet.findOne({ owner: req.session.user._id });
+    foundWallet.balance = req.body.balance
+    foundWallet.goal = req.body.goal
+    foundWallet.save()
+    res.redirect("/wallet")
+
+})
 
 module.exports = router;
