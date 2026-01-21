@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const walletSchema = new mongoose.Schema({
     number:{
         type: Number,
+        unique: true,
         required: true
     },
   
@@ -18,7 +19,8 @@ const walletSchema = new mongoose.Schema({
   ,
   owner: {
     type: mongoose.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    unique: true
   },
 });
 

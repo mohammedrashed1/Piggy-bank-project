@@ -10,7 +10,6 @@
     <p>It's time to save some money</p>
     <br>
     <form action="/wallet/create" method="post">
-        <% let number = Math.floor(Math.random() * 10000000)%>
         <h3>Number: <%= number %></h3>
         <input value="<%= number %>" style="display: none;" name="number" type="text">
         <br>
