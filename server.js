@@ -1,7 +1,7 @@
 // imports
 const express = require("express") //importing express package
 const app = express() // creates a express application
- require("dotenv").config() //this allows me to use my .env values in this file
+require("dotenv").config() //this allows me to use my .env values in this file
 const mongoose = require("mongoose")
 const morgan = require('morgan')
 const session = require('express-session');
@@ -40,6 +40,7 @@ async function connectToDB(){ //connection to the database
     try{
         await mongoose.connect(process.env.MONGODB_URI)
         console.log("Connected to Database")
+         
     }
     catch(error){
         console.log("Error Occured",error)
@@ -48,7 +49,6 @@ async function connectToDB(){ //connection to the database
 
 
 connectToDB() // connect to database
-
 
 
 

@@ -15,7 +15,10 @@ const walletSchema = new mongoose.Schema({
     type: Number,
     min: 51,
     required: true
-  }
+  },
+  lastUpdatedAt: {
+    type: Date, 
+    default: Date.now }
   ,
   owner: {
     type: mongoose.Types.ObjectId,

@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const Wallet = require("../models/Wallet")
+const Wallet = require("../models/Wallet");
+const Transfer = require("../models/Transfer")
 
 router.get("/create",async (req,res) => {
     const existingWallet = await Wallet.findOne({
@@ -10,7 +11,7 @@ router.get("/create",async (req,res) => {
     return res.redirect("/wallet");
   }
 let number;
-  let exists = true;
+let exists = true;
 
   while (exists) {
     number = Math.floor(Math.random() * 10000000)
@@ -32,7 +33,8 @@ router.post("/create", async (req,res) => {
 
 router.get("/",async(req,res)=>{
     const foundWallet = await Wallet.findOne({ owner: req.session.user._id });
-    res.render("wallet/my-wallet.ejs",{foundWallet: foundWallet})
+    const userTransfer = await Transfer.findOne({sender: foundWallet.number} || {recevierWallet: foundWallet.number})
+    res.render("wallet/my-wallet.ejs",{foundWallet: foundWallet,userTransfer: userTransfer})
     
 })
 
@@ -57,5 +59,6 @@ router.post("/edit",async(req,res)=>{
     res.redirect("/wallet")
 
 })
+
 
 module.exports = router;
