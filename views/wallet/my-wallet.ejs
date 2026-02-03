@@ -17,14 +17,8 @@
 <br>
     <h2>Wallet number: <%= foundWallet.number %> </h2>
     <h2>Wallet balance: <%= foundWallet.balance %> </h2>
-    <h2>profit: %0.05</h2>
     <h2>Wallet goal: <%= foundWallet.goal %> </h2>
     <br>
-    <% if(userTransfer){userTransfer.forEach((one) => { %>
-        <div>
-            <%= one  %>
-        </div>
-   <% });} %>
 </body>
 <a href="/" class="btn btn-primary">Return to homepage</a>
 <a href="/wallet/delete" class="btn btn-warning">Delete wallet</a>
